@@ -1,15 +1,25 @@
-export function Skills() {
+import { useRef } from "react";
+
+export function Skills({ onSubmitSkill }) {
+  const skillRef = useRef<HTMLInputElement>(null);
+  const yearsRef = useRef<HTMLInputElement>(null);
   return (
     <div>
       <form
-        onSubmit={() => {
-          event?.preventDefault();
+        onSubmit={(event) => {
+          event.preventDefault();
+          const skill = {
+            skillName: skillRef.current.value ?? "",
+            skillExp: yearsRef.current.value ?? "",
+          };
+          onSubmitSkill(skill);
         }}
         className="flex gap-2"
       >
         <input
           type="text"
           name="skill-name"
+          ref={skillRef}
           id="skillName-segment"
           className="bg-gray-900 rounded-lg p-2"
           placeholder="Skill name"
@@ -18,6 +28,7 @@ export function Skills() {
           type="number"
           name="Experience"
           id="Experience"
+          ref={yearsRef}
           className="bg-gray-900 rounded-lg p-2"
           placeholder="Experience (years): 1"
         />
