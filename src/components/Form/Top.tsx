@@ -1,9 +1,21 @@
-export function Top() {
+import { useRef } from "react";
+
+export function Top({ onSubmitHeader }) {
+  const nameRef = useRef<HTMLInputElement>(null);
+  const lastNameRef = useRef<HTMLInputElement>(null);
+  const professionRef = useRef<HTMLInputElement>(null);
+
   return (
     <div>
       <form
-        onSubmit={() => {
-          event?.preventDefault();
+        onSubmit={(event) => {
+          event.preventDefault();
+          const submittedInfo = {
+            name: nameRef.current.value ?? "",
+            lastName: lastNameRef.current.value ?? "",
+            profession: professionRef.current.value ?? "",
+          };
+          onSubmitHeader(submittedInfo);
         }}
         id="headerForm"
       >
@@ -12,25 +24,28 @@ export function Top() {
           <input
             type="text"
             name="Name"
-            id="name-segment"
+            ref={nameRef}
+            id="Name"
             className="bg-gray-900 rounded-lg"
           />
         </div>
         <div>
-          <p>Last Name</p>
+          <label htmlFor="lName">Last Name:</label>
           <input
             type="text"
-            name="Name"
-            id="lastName-segment"
+            name="lName"
+            ref={lastNameRef}
+            id="lName"
             className="bg-gray-900 rounded-lg"
           />
         </div>
         <div>
-          <p>Profession Title</p>
+          <label htmlFor="profession">Profession:</label>
           <input
             type="text"
             name="profession"
-            id="profession-segment"
+            ref={professionRef}
+            id="profession"
             className="bg-gray-900 rounded-lg"
           />
         </div>

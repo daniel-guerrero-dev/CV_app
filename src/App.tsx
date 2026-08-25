@@ -1,7 +1,19 @@
+import { useState } from "react";
 import { CVPreview } from "./components/CVPreview";
 import { FormBody } from "./components/FormBody";
 
+interface HeaderInfo {
+  name: string;
+  lastName: string;
+  profession: string;
+}
+
 export function App() {
+  const [headerInfo, setHeaderInfo] = useState({});
+  function topSubmit(info: HeaderInfo) {
+    setHeaderInfo(info);
+  }
+
   return (
     <div className="flex flex-col justify-between h-screen">
       {/* Header */}
@@ -10,8 +22,8 @@ export function App() {
       </header>
       {/* Main */}
       <main className="flex p-3 gap-1">
-        <FormBody />
-        <CVPreview />
+        <FormBody submitTop={topSubmit} />
+        <CVPreview HeaderInfo={headerInfo} />
       </main>
       {/* Footer */}
       <footer className="p-0.5 text-center">
