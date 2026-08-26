@@ -4,7 +4,7 @@ import { Languages } from "./Form/Languages";
 import { Skills } from "./Form/Skills";
 import { Top } from "./Form/Top";
 
-export function FormBody({ submitTop, submitSkill }) {
+export function FormBody({ submitTop, submitSkill, submitJob }) {
   return (
     <div className="flex flex-col p-5 bg-gray-800 w-1/2 h-full rounded-2xl text-amber-50 gap-5">
       {/* Top section, contains name and Last name, aswell as profession title */}
@@ -12,11 +12,9 @@ export function FormBody({ submitTop, submitSkill }) {
       {/* Skills section, contains a button that lets you add skills */}
       <Skills onSubmitSkill={submitSkill} />
       {/* Jobs Section */}
-      <Jobs />
+      <Jobs onJobSubmit={submitJob} />
       {/* Eduction Section */}
       <Education />
-      {/* Languages Section */}
-      <Languages />
     </div>
   );
 }

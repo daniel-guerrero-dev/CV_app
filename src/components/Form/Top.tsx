@@ -18,6 +18,7 @@ export function Top({ onSubmitHeader }) {
           onSubmitHeader(submittedInfo);
         }}
         id="headerForm"
+        className="flex flex-col gap-1"
       >
         <div>
           <label htmlFor="Name">Name:</label>
@@ -26,7 +27,7 @@ export function Top({ onSubmitHeader }) {
             name="Name"
             ref={nameRef}
             id="Name"
-            className="bg-gray-900 rounded-lg"
+            className="bg-gray-900 rounded-lg pl-1.5"
           />
         </div>
         <div>
@@ -36,7 +37,7 @@ export function Top({ onSubmitHeader }) {
             name="lName"
             ref={lastNameRef}
             id="lName"
-            className="bg-gray-900 rounded-lg"
+            className="bg-gray-900 rounded-lg pl-1.5"
           />
         </div>
         <div>
@@ -46,7 +47,7 @@ export function Top({ onSubmitHeader }) {
             name="profession"
             ref={professionRef}
             id="profession"
-            className="bg-gray-900 rounded-lg"
+            className="bg-gray-900 rounded-lg pl-1.5"
           />
         </div>
         <button

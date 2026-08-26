@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { use, useRef, useState } from "react";
 import { CVPreview } from "./components/CVPreview";
 import { FormBody } from "./components/FormBody";
 
@@ -11,11 +11,19 @@ interface SkillInfo {
   skillName: string;
   skillExp: number;
 }
+interface JobInfo {
+  jobName: string;
+  jobExp: number;
+}
 
 export function App() {
   const [headerInfo, setHeaderInfo] = useState({});
   const [skillList, setSkillList] = useState([]);
+  const [jobList, setJobList] = useState([]);
   const skillCounterRef = useRef(0);
+  const jobCounterRef = useRef(0);
+
+  //Submit Functions
   function topSubmit(info: HeaderInfo) {
     setHeaderInfo(info);
   }
@@ -23,6 +31,11 @@ export function App() {
     const SkillWithId = { ...skill, id: skillCounterRef.current };
     skillCounterRef.current++;
     setSkillList([...skillList, SkillWithId]);
+  }
+  function jobSubmit(job: JobInfo) {
+    const JobWithId = { ...job, id: jobCounterRef.current };
+    skillCounterRef.current++;
+    setJobList([...jobList, JobWithId]);
   }
 
   return (
@@ -33,8 +46,16 @@ export function App() {
       </header>
       {/* Main */}
       <main className="flex p-3 gap-1">
-        <FormBody submitTop={topSubmit} submitSkill={skillSubmit} />
-        <CVPreview HeaderInfo={headerInfo} SkillInfo={skillList} />
+        <FormBody
+          submitTop={topSubmit}
+          submitSkill={skillSubmit}
+          submitJob={jobSubmit}
+        />
+        <CVPreview
+          HeaderInfo={headerInfo}
+          SkillInfo={skillList}
+          JobInfo={jobList}
+        />
       </main>
       {/* Footer */}
       <footer className="p-0.5 text-center">

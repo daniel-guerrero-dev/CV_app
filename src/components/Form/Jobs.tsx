@@ -1,9 +1,18 @@
-export function Jobs() {
+import { useRef } from "react";
+
+export function Jobs({ onJobSubmit }) {
+  const jobRef = useRef<HTMLInputElement>(null);
+  const jobExpRef = useRef<HTMLInputElement>(null);
   return (
     <div>
       <form
-        onSubmit={() => {
-          event?.preventDefault();
+        onSubmit={(event) => {
+          event.preventDefault();
+          const jobs = {
+            jobName: jobRef.current.value ?? "",
+            jobExperience: jobExpRef.current.value ?? "",
+          };
+          onJobSubmit(jobs);
         }}
         className="flex gap-2"
       >
@@ -11,6 +20,7 @@ export function Jobs() {
           type="text"
           name="jobTitle"
           id="jobTitle"
+          ref={jobRef}
           className="bg-gray-900 rounded-lg p-2"
           placeholder="Job Title"
         />
@@ -18,6 +28,7 @@ export function Jobs() {
           type="number"
           name="jobYears"
           id="jobYears"
+          ref={jobExpRef}
           className="bg-gray-900 rounded-lg p-2"
           placeholder="Runtime (years): 1"
         />
