@@ -1,4 +1,42 @@
-export function CVPreview({ HeaderInfo, SkillInfo, JobInfo, EdInfo }) {
+interface HeaderInfoData {
+  id?: number | string | undefined;
+  name: string;
+  lastName: string;
+  profession: string;
+}
+
+interface SkillInfoData {
+  id?: number | string | undefined;
+  skillName: string;
+  skillExp: string;
+}
+
+interface JobInfoData {
+  id?: number | string | undefined;
+  jobName: string;
+  jobExperience: string;
+}
+
+interface EducationInfoData {
+  id?: number | string | undefined;
+  titleName: string;
+  institutionName: string;
+  educationLevel: string;
+}
+
+interface CVPreviewProps {
+  HeaderInfo: HeaderInfoData;
+  SkillInfo: SkillInfoData[];
+  JobInfo: JobInfoData[];
+  EdInfo: EducationInfoData[];
+}
+
+export function CVPreview({
+  HeaderInfo,
+  SkillInfo,
+  JobInfo,
+  EdInfo,
+}: CVPreviewProps) {
   return (
     <div className="p-5 bg-white w-1/2 h-50 rounded-2xl">
       <p>

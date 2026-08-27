@@ -3,19 +3,23 @@ import { CVPreview } from "./components/CVPreview";
 import { FormBody } from "./components/FormBody";
 
 interface HeaderInfo {
+  id?: number | string | undefined;
   name: string;
   lastName: string;
   profession: string;
 }
 interface SkillInfo {
+  id?: number | string | undefined;
   skillName: string;
-  skillExp: number;
+  skillExp: string;
 }
 interface JobInfo {
+  id?: number | string | undefined;
   jobName: string;
-  jobExp: number;
+  jobExperience: string;
 }
 interface EducationInfo {
+  id?: number | string | undefined;
   titleName: string;
   institutionName: string;
   educationLevel: string;
@@ -23,7 +27,11 @@ interface EducationInfo {
 
 export function App() {
   //form states
-  const [headerInfo, setHeaderInfo] = useState({});
+  const [headerInfo, setHeaderInfo] = useState<HeaderInfo>({
+    name: "",
+    lastName: "",
+    profession: "",
+  });
   const [skillList, setSkillList] = useState<SkillInfo[]>([]);
   const [jobList, setJobList] = useState<JobInfo[]>([]);
   const [edList, setEdList] = useState<EducationInfo[]>([]);
@@ -44,7 +52,7 @@ export function App() {
   }
   function jobSubmit(job: JobInfo) {
     const JobWithId = { ...job, id: jobCounterRef.current };
-    skillCounterRef.current++;
+    jobCounterRef.current++;
     setJobList([...jobList, JobWithId]);
   }
   function educationSubmit(education: EducationInfo) {

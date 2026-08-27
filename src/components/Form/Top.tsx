@@ -1,6 +1,16 @@
 import { useRef } from "react";
 
-export function Top({ onSubmitHeader }) {
+export interface SubmittedHeaderInfo {
+  name: string;
+  lastName: string;
+  profession: string;
+}
+
+export interface TopProps {
+  onSubmitHeader: (data: SubmittedHeaderInfo) => void;
+}
+
+export function Top({ onSubmitHeader }: TopProps) {
   const nameRef = useRef<HTMLInputElement>(null);
   const lastNameRef = useRef<HTMLInputElement>(null);
   const professionRef = useRef<HTMLInputElement>(null);
@@ -11,9 +21,9 @@ export function Top({ onSubmitHeader }) {
         onSubmit={(event) => {
           event.preventDefault();
           const submittedInfo = {
-            name: nameRef.current.value ?? "",
-            lastName: lastNameRef.current.value ?? "",
-            profession: professionRef.current.value ?? "",
+            name: nameRef.current?.value ?? "",
+            lastName: lastNameRef.current?.value ?? "",
+            profession: professionRef.current?.value ?? "",
           };
           onSubmitHeader(submittedInfo);
         }}

@@ -1,6 +1,16 @@
 import { useRef } from "react";
 
-export function Education({ onEducationSubmit }) {
+export interface EducationInfo {
+  titleName: string;
+  institutionName: string;
+  educationLevel: string;
+}
+
+export interface EducationFormData {
+  onEducationSubmit: (SubmittedEducationInfo: EducationInfo) => void;
+}
+
+export function Education({ onEducationSubmit }: EducationFormData) {
   const titleRef = useRef<HTMLInputElement>(null);
   const institutionNameRef = useRef<HTMLInputElement>(null);
   const edLevel = useRef<HTMLSelectElement>(null);
@@ -10,9 +20,9 @@ export function Education({ onEducationSubmit }) {
         onSubmit={(event) => {
           event.preventDefault();
           const education = {
-            titleName: titleRef.current.value ?? "",
-            institutionName: institutionNameRef.current.value ?? "",
-            educationLevel: edLevel.current.value ?? "",
+            titleName: titleRef.current?.value ?? "",
+            institutionName: institutionNameRef.current?.value ?? "",
+            educationLevel: edLevel.current?.value ?? "",
           };
           onEducationSubmit(education);
         }}

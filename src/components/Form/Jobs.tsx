@@ -1,6 +1,15 @@
 import { useRef } from "react";
 
-export function Jobs({ onJobSubmit }) {
+export interface JobInfo {
+  jobName: string;
+  jobExperience: string;
+}
+
+export interface JobFormData {
+  onJobSubmit: (SubmitedJobInfo: JobInfo) => void;
+}
+
+export function Jobs({ onJobSubmit }: JobFormData) {
   const jobRef = useRef<HTMLInputElement>(null);
   const jobExpRef = useRef<HTMLInputElement>(null);
   return (
@@ -9,8 +18,8 @@ export function Jobs({ onJobSubmit }) {
         onSubmit={(event) => {
           event.preventDefault();
           const jobs = {
-            jobName: jobRef.current.value ?? "",
-            jobExperience: jobExpRef.current.value ?? "",
+            jobName: jobRef.current?.value ?? "",
+            jobExperience: jobExpRef.current?.value ?? "",
           };
           onJobSubmit(jobs);
         }}

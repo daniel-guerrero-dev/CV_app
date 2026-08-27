@@ -1,6 +1,15 @@
 import { useRef } from "react";
 
-export function Skills({ onSubmitSkill }) {
+export interface SkillInfo {
+  skillName: string;
+  skillExp: string;
+}
+
+export interface SkillFormData {
+  onSubmitSkill: (SubmittedSkillInfo: SkillInfo) => void;
+}
+
+export function Skills({ onSubmitSkill }: SkillFormData) {
   const skillRef = useRef<HTMLInputElement>(null);
   const yearsRef = useRef<HTMLInputElement>(null);
   return (
@@ -9,8 +18,8 @@ export function Skills({ onSubmitSkill }) {
         onSubmit={(event) => {
           event.preventDefault();
           const skill = {
-            skillName: skillRef.current.value ?? "",
-            skillExp: yearsRef.current.value ?? "",
+            skillName: skillRef.current?.value ?? "",
+            skillExp: yearsRef.current?.value ?? "",
           };
           onSubmitSkill(skill);
         }}
