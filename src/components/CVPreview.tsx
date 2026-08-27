@@ -1,5 +1,4 @@
 interface HeaderInfoData {
-  id?: number | string | undefined;
   name: string;
   lastName: string;
   profession: string;

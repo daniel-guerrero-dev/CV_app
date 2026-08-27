@@ -3,7 +3,6 @@ import { CVPreview } from "./components/CVPreview";
 import { FormBody } from "./components/FormBody";
 
 interface HeaderInfo {
-  id?: number | string | undefined;
   name: string;
   lastName: string;
   profession: string;
