@@ -1,4 +1,4 @@
-import { use, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { CVPreview } from "./components/CVPreview";
 import { FormBody } from "./components/FormBody";
 
@@ -15,13 +15,23 @@ interface JobInfo {
   jobName: string;
   jobExp: number;
 }
+interface EducationInfo {
+  titleName: string;
+  institutionName: string;
+  educationLevel: string;
+}
 
 export function App() {
+  //form states
   const [headerInfo, setHeaderInfo] = useState({});
-  const [skillList, setSkillList] = useState([]);
-  const [jobList, setJobList] = useState([]);
+  const [skillList, setSkillList] = useState<SkillInfo[]>([]);
+  const [jobList, setJobList] = useState<JobInfo[]>([]);
+  const [edList, setEdList] = useState<EducationInfo[]>([]);
+
+  //counter states
   const skillCounterRef = useRef(0);
   const jobCounterRef = useRef(0);
+  const edCounterRef = useRef(0);
 
   //Submit Functions
   function topSubmit(info: HeaderInfo) {
@@ -37,6 +47,11 @@ export function App() {
     skillCounterRef.current++;
     setJobList([...jobList, JobWithId]);
   }
+  function educationSubmit(education: EducationInfo) {
+    const EducationWithId = { ...education, id: edCounterRef.current };
+    edCounterRef.current++;
+    setEdList([...edList, EducationWithId]);
+  }
 
   return (
     <div className="flex flex-col justify-between h-screen">
@@ -50,11 +65,13 @@ export function App() {
           submitTop={topSubmit}
           submitSkill={skillSubmit}
           submitJob={jobSubmit}
+          submitEducation={educationSubmit}
         />
         <CVPreview
           HeaderInfo={headerInfo}
           SkillInfo={skillList}
           JobInfo={jobList}
+          EdInfo={edList}
         />
       </main>
       {/* Footer */}

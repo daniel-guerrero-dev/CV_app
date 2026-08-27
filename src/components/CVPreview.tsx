@@ -1,4 +1,4 @@
-export function CVPreview({ HeaderInfo, SkillInfo, JobInfo }) {
+export function CVPreview({ HeaderInfo, SkillInfo, JobInfo, EdInfo }) {
   return (
     <div className="p-5 bg-white w-1/2 h-50 rounded-2xl">
       <p>
@@ -20,6 +20,17 @@ export function CVPreview({ HeaderInfo, SkillInfo, JobInfo }) {
           return (
             <li key={job.id}>
               {job.jobName} | {job.jobExperience} years worked
+            </li>
+          );
+        })}
+      </ul>
+      <hr />
+      <ul>
+        {EdInfo.map((education) => {
+          return (
+            <li key={education.id}>
+              {education.titleName} | {education.institutionName} |{" "}
+              {education.educationLevel}
             </li>
           );
         })}

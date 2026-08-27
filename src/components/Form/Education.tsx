@@ -1,9 +1,20 @@
-export function Education() {
+import { useRef } from "react";
+
+export function Education({ onEducationSubmit }) {
+  const titleRef = useRef<HTMLInputElement>(null);
+  const institutionNameRef = useRef<HTMLInputElement>(null);
+  const edLevel = useRef<HTMLSelectElement>(null);
   return (
     <div>
       <form
-        onSubmit={() => {
-          event?.preventDefault();
+        onSubmit={(event) => {
+          event.preventDefault();
+          const education = {
+            titleName: titleRef.current.value ?? "",
+            institutionName: institutionNameRef.current.value ?? "",
+            educationLevel: edLevel.current.value ?? "",
+          };
+          onEducationSubmit(education);
         }}
         className="flex gap-2"
       >
@@ -11,6 +22,7 @@ export function Education() {
           type="text"
           name="educationTitle"
           id="educationTitle"
+          ref={titleRef}
           className="bg-gray-900 rounded-lg p-2"
           placeholder="Education"
         />
@@ -18,16 +30,20 @@ export function Education() {
           type="text"
           name="institutionName"
           id="institutionName"
+          ref={institutionNameRef}
           className="bg-gray-900 rounded-lg p-2"
           placeholder="Institution Name"
         />
-        <input
-          type="number"
+        <select
           name="educationLevel"
           id="educationLevel"
+          ref={edLevel}
           className="bg-gray-900 rounded-lg p-2"
-          placeholder="Level"
-        />
+        >
+          <option value="Undergrad">Undergrad</option>
+          <option value="Postgrad">Postgrad</option>
+          <option value="N/A">N/A</option>
+        </select>
         <button
           className="bg-gray-900 rounded-lg p-2 mt-1 cursor-pointer hover:bg-gray-600 transition-colors"
           type="submit"
