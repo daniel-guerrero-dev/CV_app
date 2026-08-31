@@ -28,36 +28,38 @@ export function Top({ onSubmitHeader }: TopProps) {
           onSubmitHeader(submittedInfo);
         }}
         id="headerForm"
-        className="flex flex-col gap-1"
+        className=""
       >
-        <div>
-          <label htmlFor="Name">Name:</label>
-          <input
-            type="text"
-            name="Name"
-            ref={nameRef}
-            id="Name"
-            className="bg-gray-900 rounded-lg pl-1.5"
-          />
+        <div className="flex gap-2">
+          <div>
+            <input
+              type="text"
+              name="Name"
+              ref={nameRef}
+              id="Name"
+              className="bg-gray-900 rounded-lg p-2"
+              placeholder="First Name"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              name="lName"
+              ref={lastNameRef}
+              id="lName"
+              className="bg-gray-900 rounded-lg p-2"
+              placeholder="Last Name"
+            />
+          </div>
         </div>
         <div>
-          <label htmlFor="lName">Last Name:</label>
-          <input
-            type="text"
-            name="lName"
-            ref={lastNameRef}
-            id="lName"
-            className="bg-gray-900 rounded-lg pl-1.5"
-          />
-        </div>
-        <div>
-          <label htmlFor="profession">Profession:</label>
           <input
             type="text"
             name="profession"
             ref={professionRef}
             id="profession"
-            className="bg-gray-900 rounded-lg pl-1.5"
+            className="bg-gray-900 rounded-lg p-2 mt-1"
+            placeholder="Profession Title"
           />
         </div>
         <button

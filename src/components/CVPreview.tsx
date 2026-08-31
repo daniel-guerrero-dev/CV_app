@@ -37,11 +37,12 @@ export function CVPreview({
   EdInfo,
 }: CVPreviewProps) {
   return (
-    <div className="p-5 bg-white w-1/2 h-50 rounded-2xl">
-      <p>
+    <div className="p-5 bg-white w-1/2 h-fit rounded-2xl font-serif">
+      <p className="text-center">
         {HeaderInfo.name} {HeaderInfo.lastName}
       </p>
-      <p>{HeaderInfo.profession}</p>
+      <p className="text-center text-sm">{HeaderInfo.profession}</p>
+      <hr />
       <ul>
         {SkillInfo.map((skill) => {
           return (
