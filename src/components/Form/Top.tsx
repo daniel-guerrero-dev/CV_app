@@ -30,7 +30,7 @@ export function Top({ onSubmitHeader }: TopProps) {
         id="headerForm"
         className=""
       >
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
           <div>
             <input
               type="text"

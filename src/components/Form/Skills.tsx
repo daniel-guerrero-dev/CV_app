@@ -23,7 +23,7 @@ export function Skills({ onSubmitSkill }: SkillFormData) {
           };
           onSubmitSkill(skill);
         }}
-        className="flex gap-2"
+        className="flex gap-2 flex-wrap"
       >
         <input
           type="text"

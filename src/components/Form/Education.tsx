@@ -26,7 +26,7 @@ export function Education({ onEducationSubmit }: EducationFormData) {
           };
           onEducationSubmit(education);
         }}
-        className="flex gap-2"
+        className="flex gap-2 flex-wrap"
       >
         <input
           type="text"

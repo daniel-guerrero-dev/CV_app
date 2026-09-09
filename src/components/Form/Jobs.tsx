@@ -23,7 +23,7 @@ export function Jobs({ onJobSubmit }: JobFormData) {
           };
           onJobSubmit(jobs);
         }}
-        className="flex gap-2"
+        className="flex gap-2 flex-wrap"
       >
         <input
           type="text"
